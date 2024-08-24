@@ -1,3 +1,12 @@
+# set-up
+
 ```shell
-./run.sh
+./init.sh
+source ~/.zshrc
+```
+
+# run
+
+```shell
+42env
 ```
