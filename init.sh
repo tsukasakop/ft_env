@@ -21,7 +21,7 @@ add-alias()
 {
   grep "# 42env" ~/.zshrc >/dev/null || cat <<EOF >>~/.zshrc
 # 42env
-alias 42env="$REALPATH/run.sh"
+alias 42env="$DIR/run.sh"
 EOF
 }
 
