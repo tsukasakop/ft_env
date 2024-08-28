@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/* \
     && update-alternatives --install /usr/bin/cc cc /usr/bin/clang-12 100 \
     && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-12 100 \
-    && pip install norminette==3.3.55 \
+    && pip install norminette==3.3.51 \
     && bash -c "$(curl -fsSL https://raw.github.com/xicodomingues/francinette/master/bin/install.sh)"
 
 WORKDIR /workspace
