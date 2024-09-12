@@ -11,18 +11,6 @@
 - container will be created temporary, but running with option -r (`42env -r`), it remains
 
 # set-up
-```shell
-make
-source ~/.zshrc
-```
-
-# run
-
-```shell
-42env
-```
-
-## init
 
 1. [install docker](https://www.docker.com/)
 
@@ -38,4 +26,18 @@ make
 5. update alias
 ```shell
 source ~/.zshrc
+```
+
+# usage
+
+### start temporary container
+
+```shell
+42env
+```
+
+### start container remains
+
+```shell
+42env -r
 ```
