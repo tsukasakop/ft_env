@@ -1,30 +1,36 @@
-FROM ubuntu:22.04
+FROM ubuntu:jammy
 
 LABEL maintainer="tsukasakop <tsukasakop@gmail.com>" \
-      version="1.0"
-
-ADD ./home/.bashrc /root/.bashrc
+      version="1.1"
 
 # Update the package
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN yes | unminimize
+
 RUN apt-get update && apt-get install -y \
     build-essential \
     clang-12 \
     clang-tools-12 \
     cmake \
-    git \
-    vim \
     lldb \
-    wget \
-    curl \
-    unzip \
-    python3 \
-    python3-pip \
-    python3.10-venv \
-    && rm -rf /var/lib/apt/lists/* \
-    && update-alternatives --install /usr/bin/cc cc /usr/bin/clang-12 100 \
-    && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-12 100 \
-    && pip install norminette==3.3.51 \
+    && update-alternatives --install /usr/bin/cc cc /usr/bin/clang-12 100
+
+RUN apt-get install -y man-db \
+    manpages-dev \
+    glibc-doc \
+    libbsd-dev \
+    python3-pip
+
+RUN pip install norminette==3.3.51 \
     && bash -c "$(curl -fsSL https://raw.github.com/xicodomingues/francinette/master/bin/install.sh)"
+
+RUN rm -rf /var/lib/apt/lists/*
+
+ENV DEBIAN_FRONTEND=
+
+# Add files on "home" dir
+ADD ./home/.bashrc /root/.bashrc
 
 WORKDIR /workspace
 
